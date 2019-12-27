@@ -37,6 +37,9 @@ header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
 header('X-Accel-Buffering: no');
 header('Transfer-encoding: chunked');
+header('Access-Control-Allow-Origin: *');
+
+header('Access-Control-Allow-Credentials: true');
 
 $counter = rand(1, 10);
 while (true) {
