@@ -69,5 +69,6 @@ while (true) {
     /*
     sleep each iteration regardless of whether the data has changed or not....
      */
-    sleep(10);
+    usleep(0.5 * 1000000);
+
 }
