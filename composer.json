@@ -6,5 +6,7 @@
             "email": "pankaj@ucreate.co.in"
         }
     ],
-    "require": {}
+    "require": {
+        "react/event-loop": "^1.1.0"
+    }
 }

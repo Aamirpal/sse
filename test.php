@@ -1,5 +1,8 @@
 
 <?php
+stream_set_read_buffer($socket, 0);
+stream_set_write_buffer($socket, 0);
+
 set_time_limit(0);
 ini_set('auto_detect_line_endings', 1);
 ini_set('max_execution_time', '0');
