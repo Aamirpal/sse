@@ -3,8 +3,10 @@
 function setInterval($f, $milliseconds)
 {
     $seconds = (int) $milliseconds / 1000;
-    while (true) {
+    $i = 0;
+    while ($i < 1000) {
         $f();
+        $i++;
         sleep($seconds);
     }
 }
