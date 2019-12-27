@@ -7,10 +7,10 @@ if (function_exists('apache_setenv')) {
 }
 @ini_set('zlib.output_compression', 0);
 @ini_set('implicit_flush', 1);
-// while (ob_get_level() != 0) {
-//     ob_end_flush();
-// }
-// ob_implicit_flush(1);
+while (ob_get_level() != 0) {
+    ob_end_flush();
+}
+ob_implicit_flush(1);
 
 /* ultility function for sending SSE messages */
 
