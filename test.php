@@ -1,9 +1,16 @@
 
 <?php
-stream_set_read_buffer($socket, 0);
-stream_set_write_buffer($socket, 0);
-
-set_time_limit(0);
+@set_time_limit(0); // Disable time limit
+// Prevent buffering
+if (function_exists('apache_setenv')) {
+    @apache_setenv('no-gzip', 1);
+}
+@ini_set('zlib.output_compression', 0);
+@ini_set('implicit_flush', 1);
+while (ob_get_level() != 0) {
+    ob_end_flush();
+}
+ob_implicit_flush(1);
 ini_set('auto_detect_line_endings', 1);
 ini_set('max_execution_time', '0');
 
@@ -29,12 +36,6 @@ header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
 header('X-Accel-Buffering: no');
 header('Transfer-encoding: chunked');
-@ini_set('zlib.output_compression', 0);
-@ini_set('implicit_flush', 1);
-while (ob_get_level() != 0) {
-    ob_end_flush();
-}
-ob_implicit_flush(1);
 
 while (true) {
     ob_start();
