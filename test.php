@@ -16,7 +16,7 @@ if (function_exists('apache_setenv')) {
 
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
-//  header('Transfer-encoding: chunked');
+header('Transfer-encoding: chunked');
 header('X-Accel-Buffering: no');
 header('Connection: keep-alive');
 
@@ -35,9 +35,9 @@ while (1) {
 
     // Send a simple message at random intervals.
 
-    ob_flush();
+    ob_end_flush();
     flush();
-    usleep(2*1000);
+    usleep(2*10000);
     $counter++;
 
 }
