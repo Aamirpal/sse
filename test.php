@@ -38,17 +38,16 @@ header('Cache-Control: no-cache');
 header('X-Accel-Buffering: no');
 header('Transfer-encoding: chunked');
 header('Access-Control-Allow-Origin: *');
-
 header('Access-Control-Allow-Credentials: true');
 
 $counter = rand(1, 10);
 while (true) {
     // Every second, send a "ping" event.
 
-    echo "event: ping\n";
+    print("event: ping\n");
     $curDate = date(DATE_ISO8601);
-    echo 'data: {"time": "' . $curDate . '"}';
-    echo "\n\n";
+    print('data: {"time": "' . $curDate . '"}');
+    print("\n\n");
 
     // Send a simple message at random intervals.
 
