@@ -7,58 +7,37 @@ if (function_exists('apache_setenv')) {
 }
 @ini_set('zlib.output_compression', 0);
 @ini_set('implicit_flush', 1);
-while (ob_get_level() != 0) {
-    ob_end_flush();
-}
-ob_implicit_flush(1);
-ini_set('auto_detect_line_endings', 1);
-ini_set('max_execution_time', '0');
-
-/* start fresh */
-ob_end_clean();
+// while (ob_get_level() != 0) {
+//     ob_end_flush();
+// }
+// ob_implicit_flush(1);
 
 /* ultility function for sending SSE messages */
-function sse($evtname = 'sse', $data = null, $retry = 1000)
-{
-    if (!is_null($data)) {
-        echo "event:" . $evtname . "\r\n";
-        echo "retry:" . $retry . "\r\n";
-        echo "data:" . json_encode($data, JSON_FORCE_OBJECT | JSON_HEX_QUOT | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS);
-        echo "\r\n\r\n";
-    }
-}
 
-$id = 0;
-$event = 'event1';
-$oldValue = null;
-
-header("HTTP/1.1 200 OK");
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
+//  header('Transfer-encoding: chunked');
 header('X-Accel-Buffering: no');
-header('Transfer-encoding: chunked');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Credentials: true');
+header('Connection: keep-alive');
 
-$counter = rand(1, 10);
-while (true) {
+$counter = 1;
+
+while (1) {
     // Every second, send a "ping" event.
 
+    $curDate = date("r");
+    print("id: {$counter}\n");
     print("event: ping\n");
-    $curDate = date(DATE_ISO8601);
-    print('data: {"time": "' . $curDate . '"}');
-    print("\n\n");
+    echo "data: The server time is: {$curDate}\n\n";
+
+    //print('data: "time": "' . $curDate . '"');
+    //  print("\n\n");
 
     // Send a simple message at random intervals.
 
-    $counter--;
-
-    if (!$counter) {
-        echo 'data: This is a message at time ' . $curDate . "\n\n";
-        $counter = rand(1, 10);
-    }
-
-    ob_end_flush();
+    ob_flush();
     flush();
-    sleep(1);
+    sleep(2);
+    $counter++;
+
 }
