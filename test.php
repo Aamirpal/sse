@@ -27,6 +27,8 @@ header('Cache-Control: no-cache');
 header('X-Accel-Buffering: no');
 
 while (true) {
+    ob_start();
+
     try {
         $data = date('r');
     } catch (Exception $e) {
@@ -49,10 +51,12 @@ while (true) {
         }
 
         @flush();
+        ob_end_flush();
+
     }
 
     /*
     sleep each iteration regardless of whether the data has changed or not....
      */
-    sleep(1);
+    sleep(10);
 }
