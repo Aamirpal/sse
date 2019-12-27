@@ -28,6 +28,7 @@ $oldValue = null;
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
 header('X-Accel-Buffering: no');
+header('Transfer-encoding: chunked');
 
 while (true) {
     ob_start();
