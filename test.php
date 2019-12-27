@@ -6,7 +6,7 @@ if (function_exists('apache_setenv')) {
     @apache_setenv('no-gzip', 1);
 }
 @ini_set('zlib.output_compression', 0);
-@ini_set('implicit_flush', 1);
+@ini_set('implicit_flush', 5);
 // while (ob_get_level() != 0) {
 //     ob_end_flush();
 // }
@@ -37,7 +37,8 @@ while (1) {
 
     ob_flush();
     flush();
-    usleep(5*100000);
+    usleep(5 * 100000);
+    sleep(1);
     $counter++;
 
 }
