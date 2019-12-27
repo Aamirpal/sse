@@ -38,36 +38,25 @@ header('Cache-Control: no-cache');
 header('X-Accel-Buffering: no');
 header('Transfer-encoding: chunked');
 
+$counter = rand(1, 10);
 while (true) {
-    try {
-        $data = date('r');
-    } catch (Exception $e) {
-        $data = $e->getMessage();
+    // Every second, send a "ping" event.
+
+    echo "event: ping\n";
+    $curDate = date(DATE_ISO8601);
+    echo 'data: {"time": "' . $curDate . '"}';
+    echo "\n\n";
+
+    // Send a simple message at random intervals.
+
+    $counter--;
+
+    if (!$counter) {
+        echo 'data: This is a message at time ' . $curDate . "\n\n";
+        $counter = rand(1, 10);
     }
 
-    if ($oldValue !== $data) {
-
-        /* data has changed or first iteration */
-        $oldValue = $data;
-
-        /* send the sse message */
-        sse($event, $data);
-
-        /* make sure all buffers are cleansed */
-        if (@ob_get_level() > 0) {
-            for ($i = 0; $i < @ob_get_level(); $i++) {
-                @ob_flush();
-            }
-        }
-
-        @flush();
-        ob_end_flush();
-
-    }
-
-    /*
-    sleep each iteration regardless of whether the data has changed or not....
-     */
-    usleep(0.5 * 1000000);
-
+    ob_end_flush();
+    flush();
+    sleep(1);
 }
