@@ -37,7 +37,7 @@ while (1) {
 
     ob_flush();
     flush();
-    sleep(2);
+    usleep(2);
     $counter++;
 
 }
