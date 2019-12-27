@@ -35,9 +35,10 @@ while (1) {
 
     // Send a simple message at random intervals.
 
-    ob_end_flush();
+    ob_flush();
     flush();
     usleep(2*10000);
+    sleep(2);
     $counter++;
 
 }
