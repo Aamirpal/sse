@@ -32,14 +32,13 @@ $id = 0;
 $event = 'event1';
 $oldValue = null;
 
+header("HTTP/1.1 200 OK");
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
 header('X-Accel-Buffering: no');
 header('Transfer-encoding: chunked');
 
 while (true) {
-    ob_start();
-
     try {
         $data = date('r');
     } catch (Exception $e) {
