@@ -7,7 +7,7 @@ if (function_exists('apache_setenv')) {
     @apache_setenv('no-gzip', 1);
 }
 @ini_set('zlib.output_compression', 0);
-@ini_set('implicit_flush', 5);
+@ini_set('implicit_flush', 1);
 // while (ob_get_level() != 0) {
 //     ob_end_flush();
 // }
