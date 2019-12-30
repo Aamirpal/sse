@@ -39,7 +39,7 @@ while (1) {
    
     ob_flush();
     flush();
-    if($i < 100){
+    if($counter < 100){
         usleep(2 * 100000);
     }else{
         sleep(5);
