@@ -27,6 +27,7 @@ while (1) {
      
     flush();
     ob_flush();
+ob_get_contents();
     $curDate = date("r h:i:sa");
     print("id: {$counter}\n");
     //print("event: ping\n");
