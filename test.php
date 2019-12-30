@@ -22,8 +22,6 @@ header('X-Accel-Buffering: no');
 header('Connection: keep-alive');
  while (ob_get_level()) ob_end_clean();
 $counter = 1;
-$buffer = 7000;
-usleep(2 * 100000);
 while (1) {
     // Every second, send a "ping" event.
   
@@ -38,7 +36,7 @@ while (1) {
     // Send a simple message at random intervals.
     flush();
     ob_flush();
-    if($counter < 50){
+    if($counter < 100){
         usleep(2 * 100000);
     }else{
         sleep(5);
