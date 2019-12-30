@@ -41,7 +41,7 @@ while (1) {
     if($i < 100){
         usleep(2 * 100000);
     }else{
-        usleep(2 * 1000000);
+        sleep(5);
     }
     
     $counter++;
