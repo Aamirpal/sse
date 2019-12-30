@@ -11,7 +11,7 @@ if (function_exists('apache_setenv')) {
 // while (ob_get_level() != 0) {
 //     ob_end_flush();
 // }
-// ob_implicit_flush(1);
+ob_implicit_flush(1);
 
 /* ultility function for sending SSE messages */
 
@@ -40,8 +40,8 @@ ob_get_contents();
     
     flush();
     ob_flush();
-    if($counter < 1){
-        usleep(2 * 1000);
+    if($counter < 50){
+        usleep(2 * 10000);
     }else{
         sleep(5);
     }
