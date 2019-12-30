@@ -15,7 +15,7 @@ if (function_exists('apache_setenv')) {
 
 /* ultility function for sending SSE messages */
 
-header('Content-Type: text/event-stream');
+header('Content-Type: text/event-stream, charset=UTF-8');
 header('Cache-Control: no-cache,  must-revalidate');
 //header('Transfer-encoding: chunked');
 header('X-Accel-Buffering: no');
