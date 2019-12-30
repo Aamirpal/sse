@@ -8,10 +8,10 @@ if (function_exists('apache_setenv')) {
 }
 @ini_set('zlib.output_compression', 0);
 @ini_set('implicit_flush', 1);
-while (ob_get_level() != 0) {
-    ob_end_flush();
-}
-ob_implicit_flush(1);
+// while (ob_get_level() != 0) {
+//     ob_end_flush();
+// }
+// ob_implicit_flush(1);
 
 /* ultility function for sending SSE messages */
 
@@ -23,7 +23,7 @@ header('Connection: keep-alive');
  while (ob_get_level()) ob_end_clean();
 $counter = 1;
 $buffer = 7000;
-
+usleep(2 * 100000);
 while (1) {
     // Every second, send a "ping" event.
   
@@ -38,11 +38,11 @@ while (1) {
     // Send a simple message at random intervals.
     flush();
     ob_flush();
-    if($counter < 50){
+    //if($counter < 50){
         usleep(2 * 100000);
-    }else{
+    //}else{
         sleep(5);
-    }
+    //}
     
     $counter++;
 
