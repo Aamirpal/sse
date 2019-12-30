@@ -40,8 +40,8 @@ ob_get_contents();
     
     flush();
     ob_flush();
-    if($counter < 100){
-        usleep(2 * 10000);
+    if($counter < 1){
+        usleep(2 * 1000);
     }else{
         sleep(5);
     }
