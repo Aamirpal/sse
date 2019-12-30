@@ -27,7 +27,7 @@ $buffer = 7000;
 while (1) {
     // Every second, send a "ping" event.
   
-    $curDate = date("r");
+    $curDate = date("r h:i:sa");
     print("id: {$counter}\n");
     //print("event: ping\n");
     echo "data: The server time is: {$curDate}\n\n";
