@@ -15,16 +15,17 @@ if (function_exists('apache_setenv')) {
 /* ultility function for sending SSE messages */
 
 header('Content-Type: text/event-stream');
-header('Cache-Control: no-cache');
+header('Cache-Control: no-cache,  must-revalidate');
 //header('Transfer-encoding: chunked');
 header('X-Accel-Buffering: no');
 header('Connection: keep-alive');
-
+ while (ob_get_level()) ob_end_clean();
 $counter = 1;
+$buffer = 7000;
 
 while (1) {
     // Every second, send a "ping" event.
-    ob_start();
+    ob_start(null,$buffer,PHP_OUTPUT_HANDLER_FLUSHABLE);
     $curDate = date("r");
     print("id: {$counter}\n");
     //print("event: ping\n");
@@ -37,7 +38,6 @@ while (1) {
 
     ob_flush();
     flush();
-    ob_end_clean();
     if($i < 100){
         usleep(2 * 100000);
     }else{
