@@ -24,7 +24,7 @@ $counter = 1;
 
 while (1) {
     // Every second, send a "ping" event.
-
+    ob_start();
     $curDate = date("r");
     print("id: {$counter}\n");
     //print("event: ping\n");
@@ -37,7 +37,8 @@ while (1) {
 
     ob_flush();
     flush();
-    usleep(2 * 100000);
+    ob_end_clean();
+    usleep(2 * 1000000);
     $counter++;
 
 }
