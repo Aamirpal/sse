@@ -38,11 +38,11 @@ while (1) {
     // Send a simple message at random intervals.
     flush();
     ob_flush();
-    //if($counter < 50){
+    if($counter < 50){
         usleep(2 * 100000);
-    //}else{
+    }else{
         sleep(5);
-    //}
+    }
     
     $counter++;
 
