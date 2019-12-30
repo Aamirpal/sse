@@ -8,10 +8,10 @@ if (function_exists('apache_setenv')) {
 }
 @ini_set('zlib.output_compression', 0);
 @ini_set('implicit_flush', 1);
-// while (ob_get_level() != 0) {
-//     ob_end_flush();
-// }
-// ob_implicit_flush(1);
+while (ob_get_level() != 0) {
+    ob_end_flush();
+}
+ob_implicit_flush(1);
 
 /* ultility function for sending SSE messages */
 
@@ -41,7 +41,7 @@ while (1) {
     if($counter < 50){
         usleep(2 * 100000);
     }else{
-        sleep(10);
+        sleep(5);
     }
     
     $counter++;
