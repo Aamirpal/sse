@@ -28,7 +28,7 @@ while (1) {
     $curDate = date("r h:i:sa");
     print("id: {$counter}\n");
     //print("event: ping\n");
-    print("data: The server time is: {$counter}\n\n");
+    print("data: The server time is: {$curDate}\n\n");
 
     //print('data: "time": "' . $curDate . '"');
     //  print("\n\n");
@@ -37,7 +37,7 @@ while (1) {
     flush();
     ob_flush();
     if($counter < 100){
-        usleep(2 * 100000);
+        usleep(2 * 10000);
     }else{
         sleep(5);
     }
