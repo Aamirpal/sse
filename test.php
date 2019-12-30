@@ -24,7 +24,9 @@ header('Connection: keep-alive');
 $counter = 1;
 while (1) {
     // Every second, send a "ping" event.
-  
+     
+    flush();
+    ob_flush();
     $curDate = date("r h:i:sa");
     print("id: {$counter}\n");
     //print("event: ping\n");
