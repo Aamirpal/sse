@@ -30,7 +30,7 @@ while (1) {
     $curDate = date("r h:i:sa");
     print("id: {$counter}\n");
     //print("event: ping\n");
-    echo "data: The server time is: {$curDate}\n\n";
+    print("data: The server time is: {$curDate}\n\n");
 
     //print('data: "time": "' . $curDate . '"');
     //  print("\n\n");
