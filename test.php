@@ -26,7 +26,7 @@ $buffer = 7000;
 
 while (1) {
     // Every second, send a "ping" event.
-    ob_start(null,$buffer,PHP_OUTPUT_HANDLER_FLUSHABLE);
+  
     $curDate = date("r");
     print("id: {$counter}\n");
     //print("event: ping\n");
@@ -36,7 +36,7 @@ while (1) {
     //  print("\n\n");
    
     // Send a simple message at random intervals.
-    ob_end_flush();
+   
     ob_flush();
     flush();
     if($i < 100){
