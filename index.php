@@ -1,9 +1,15 @@
 <?php
+if (ob_get_level() == 0) ob_start();
+for ($i = 0; $i<10; $i++){
 
-ob_implicit_flush(true);
-ob_end_flush();
+    echo "<br> Line to show.";
+    echo str_pad('',4096)."\n";    
 
-for ($i=0; $i<5; $i++) {
-   echo $i.'<br>';
-   sleep(1);
+    ob_flush();
+    flush();
+    sleep(2);
 }
+
+echo "Done.";
+
+ob_end_flush();
