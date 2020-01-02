@@ -40,11 +40,7 @@ while (1) {
     
     flush();
     ob_flush();
-    if($counter < 50){
-        usleep(2 * 10000);
-    }else{
-        sleep(5);
-    }
+    sleep(5);
 
     $counter++;
 }
