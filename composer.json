@@ -2,11 +2,10 @@
     "name": "pankajvashisht/sse",
     "authors": [
         {
-            "name": "Pankaj Vashisht",
-            "email": "pankaj@ucreate.co.in"
+            "name": "Aamirpal Sehmi"
         }
     ],
     "require": {
-        "react/event-loop": "^1.1.0"
+        "php": "7.2.*"
     }
 }

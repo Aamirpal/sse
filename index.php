@@ -1,5 +1,5 @@
-
 <?php
+
 session_write_close();
 @set_time_limit(0); // Disable time limit
 // Prevent buffering
@@ -27,7 +27,7 @@ while (1) {
      
     flush();
     ob_flush();
-ob_get_contents();
+    ob_get_contents();
     $curDate = date("r h:i:sa");
     print("id: {$counter}\n");
     //print("event: ping\n");
@@ -45,7 +45,6 @@ ob_get_contents();
     }else{
         sleep(5);
     }
-    
-    $counter++;
 
+    $counter++;
 }
